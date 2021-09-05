@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela 1</title>
+    <link  rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    
+    <button class="btncarregar" type="button" onclick="GET('https://jsonplaceholder.typicode.com/users/1/posts')">Carregar</button>
+
+    <div class="backhome">
+        <a href="index.html" class="abackhome">Voltar para o menu principal</a>
+    </div>
+    <script>
+            /* API */
+             //Pega a URL
+           function GET(url){
+               fetch(url)
+               .then((response) => response.json())
+               .then((json) => criarTabela(json));
+           }
+
+           function criarTabela(dados){
+                var button = document.querySelector('button')
+                var body = document.getElementsByTagName('body')[0];
+                var backhome = document.querySelector('.backhome')
+
+                var tbl = document.createElement('table');
+                tbl.style.width = '90%';
+                tbl.style.margin= '0 auto';
+                tbl.setAttribute('border', '1');
+                tbl.style.marginTop = '100px';
+                tbl.style.marginBottom = '125px';
+
+                var tbdy = document.createElement('tbody');
+                var thd = document.createElement('thead');
+
+                var thTitle = document.createElement('th');
+                var thBody = document.createElement('th'); 
+
+                thTitle.appendChild(document.createTextNode('Titulo'));
+                thBody.appendChild(document.createTextNode('Descrição'));
+
+                thTitle.style.fontWeight = "600";
+                thTitle.style.color = 'white';
+
+                thBody.style.fontWeight = "600";
+                thBody.style.color = 'white';
+
+                thd.appendChild(thTitle);
+                thd.appendChild(thBody)
+                tbl.appendChild(thd);
+
+                for (var i = 0; i < dados.length; i++) {
+                    var tr = document.createElement('tr');
+
+                    var tdTitulo = document.createElement('td');
+                    tdTitulo.style.color= 'white';
+
+                    tdTitulo.appendChild(document.createTextNode(dados[i].title));
+                    tr.appendChild(tdTitulo);
+
+                    var tdDescricao = document.createElement('td');
+                    tdDescricao.style.color= 'white';
+
+                    tdDescricao.appendChild(document.createTextNode(dados[i].body));
+                    tr.appendChild(tdDescricao);
+
+                    tbdy.appendChild(tr);
+                }
+
+                tbl.appendChild(tbdy);
+                body.insertBefore(tbl, backhome)
+                button.parentNode.removeChild(button)
+           }
+    </script>
+</body>
+</html>

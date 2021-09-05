@@ -1,0 +1,199 @@
+/* RESET */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+li {
+    list-style: none;
+    font-family: 'Poppins';
+}
+
+/* Background */
+body {
+    background-color: black; /* Mudar para preto */
+}
+
+/* Estilização Header */
+.header {
+    height: 80px;
+    max-width: 100%;
+
+    margin-top: -82px;
+
+    background-color: rgba(20, 20, 20, 1);
+
+   align-items: center;
+
+}
+
+.headeron{
+    height: 80px;
+    max-width: 100%;
+
+    margin-top: 0px;
+
+    background-color: rgba(20, 20, 20, 1);
+
+   align-items: center;
+
+   transition: 5s;
+}
+
+ img {
+    display: block;
+    margin: 0 auto;
+
+   padding-top: 19px;
+}
+
+/* Estilização do Container */
+#container {
+    display: flex;
+    justify-content: center; /* Eixo X*/
+
+   margin-top: 202px;
+   margin-left: 337px;
+
+   background-color: transparent;
+
+   height: 100px;
+   width: 500px;
+
+   border-radius: 55px;
+
+   transition: 1s;
+}
+
+ul {
+    display: none;
+}
+
+li {
+    padding-top: 36px;
+    margin-left: 58px;
+
+    font-size: 20px;
+}
+
+li:hover{
+    text-shadow: 0 0 5px white, 0 0 25px white, 0 0 50px white, 0 0 200px white;
+}
+
+#container.ativo {
+    background-color: rgba(20, 20, 20, 1);
+
+}
+
+#container.ativo ul{
+    display: block;
+    display: flex;
+}
+
+/* Estilização do Menu Hambúrguer */
+.btn {
+    border: none;
+    border-top: 2px solid white;
+    
+    width: 50px;
+
+    cursor: pointer;
+}
+
+.btn::before{
+    position: relative;
+
+    content: '';
+    display: block;
+
+    width: 50px;
+    height: 2px;
+
+    background: white;
+
+    margin-top: 12px;
+
+    transition: 1s;
+}
+
+.btn::after {
+    position: relative;
+
+    content: '';
+    display: block;
+
+    width: 50px;
+    height: 2px;
+
+    background: white;
+
+    margin-top: 12px;
+
+    transition: 1s;
+}
+
+#container.ativo .btn {
+    cursor: pointer;
+
+    padding-top: 20px;
+
+    border-top-color: transparent;
+}
+
+#container.ativo .btn::after {
+    transform: rotate(135deg);
+}
+
+#container.ativo .btn::before {
+    transform: rotate(-135deg);
+    top: 12px;
+}
+
+/* Estilização das Telas */
+.abackhome {
+    display: block;
+
+    padding: 10px 20px 10px 20px;
+    width: 219px;
+
+    background-color: rgba(20, 20, 20, 1);
+
+    border-radius: 30px;
+
+    letter-spacing: 1px;
+
+    font-family: 'Poppins';
+}
+
+.abackhome:hover {
+    text-shadow: 0 0 5px white, 0 0 25px white, 0 0 50px white, 0 0 200px white;
+}
+
+.btncarregar {
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+
+    margin-top: 264px;
+    margin-bottom: 323px;
+
+    padding: 15px 60px 15px 60px;
+
+    font-family: 'Poppins';
+    font-size: 30px;
+    letter-spacing: 4px;
+
+    color: white;
+    background-color: rgba(20, 20, 20, 1);
+    border: none;
+    border-radius: 10px;
+}
+
+.btncarregar:hover {
+    text-shadow: 0 0 5px white, 0 0 25px white, 0 0 50px white, 0 0 200px white;
+}

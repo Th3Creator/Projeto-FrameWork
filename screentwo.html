@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela 2</title>
+    <link  rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <button class="btncarregar" type="button" onclick="GET('https://jsonplaceholder.typicode.com/users/1/albums')">Carregar</button>
+
+
+    <div class="backhome">
+        <a href="index.html" class="abackhome">Voltar para o menu principal</a>
+    </div>
+    <script>
+        /* API */
+           //Pega a URL
+           function GET(url){
+               fetch(url)
+               .then((response) => response.json())
+               .then((json) => criarTabela(json));
+           }
+
+           function criarTabela(dados){
+                var button = document.querySelector('button')
+                var body = document.getElementsByTagName('body')[0];
+                var backhome = document.querySelector('.backhome')
+
+                var tbl = document.createElement('table');
+                tbl.style.width = '20%';
+                tbl.style.margin= '0 auto';
+                tbl.setAttribute('border', '1');
+                tbl.style.marginTop = '200px';
+                tbl.style.marginBottom = '190px';
+
+                var tbdy = document.createElement('tbody');
+                var thd = document.createElement('thead');
+
+                var thTitle = document.createElement('th');
+                thTitle.appendChild(document.createTextNode('Titulo'));
+
+                thTitle.style.fontWeight = "600";
+                thTitle.style.color = 'white';
+
+                thd.appendChild(thTitle);
+                tbl.appendChild(thd);
+
+                for (var i = 0; i < dados.length; i++) {
+                    var tr = document.createElement('tr');
+
+                    var tdTitulo = document.createElement('td');
+                    tdTitulo.style.color= 'white';
+
+                    tdTitulo.appendChild(document.createTextNode(dados[i].title));
+                    tr.appendChild(tdTitulo);
+
+                    tbdy.appendChild(tr);
+                }
+
+                tbl.appendChild(tbdy);
+                body.insertBefore(tbl, backhome)
+                button.parentNode.removeChild(button)
+           }
+    </script>
+</body>
+</html>
